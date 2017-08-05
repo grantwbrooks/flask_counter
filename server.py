@@ -6,6 +6,9 @@ app.secret_key = 'ThisIsSecret' # you need to set a secret key for security purp
 # our index route will handle rendering our form
 @app.route('/')
 def index():
+    if 'count' not in session:
+        session['count'] = 0
+
     session['count'] += 1
     print session['count']
     return render_template("index.html")
